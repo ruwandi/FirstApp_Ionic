@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>GitHub Search App</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Welcome to MyFirst App!</h2>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <ion-label>Language</ion-label>
+
+        <ion-select name="language" [(ngModel)] = "language" >
+          <ion-option value="Java">Java</ion-option>
+          <ion-option value="css">css</ion-option>
+          <ion-option value="PHP">PHP</ion-option>
+          <ion-option value="Ruby">Ruby</ion-option>
+          <ion-option value="Arduino">Arduino</ion-option>
+        </ion-select>
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <ion-searchbar (keyup)="findData($event)"></ion-searchbar>
+            <ion-list>
+              
+            </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+</ion-content>
