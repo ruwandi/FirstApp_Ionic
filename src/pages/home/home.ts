@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-import {Service} from '../../providers/service';
+import {Service} from '../../providers/service/service';
 
 @Component({
   selector: 'page-home',
@@ -11,14 +11,15 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     public ServiceProvider:Service
-    ) {
+    ) { }
 
-  }
   findData(key:any){
     const data = {
       keyword:key.target.value,
-      lang:this.language
+      lang:this.language 
     };
     
-this.ServiceProvider.serchRepo(data)
-}
+this.ServiceProvider.searchRepo(data).subscribe(res=>{
+console.log(res);
+})
+  }}

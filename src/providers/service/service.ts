@@ -1,6 +1,8 @@
-import { HttpClient,header } from '@angular/common/http';
+import { Http,Headers} from '@angular/http';
 import { Injectable } from '@angular/core';
-import { ThrowStmt } from '@angular/compiler';
+
+import 'rxjs/add/operator/map';
+
 
 /*
   Generated class for the ServiceProvider provider.
@@ -9,13 +11,16 @@ import { ThrowStmt } from '@angular/compiler';
   and Angular DI.
 */
 @Injectable()
-export class ServiceProvider {
+export class Service {
 
-  constructor(public http: HttpClient) {
+  constructor(public http: Http) {
     console.log('Hello ServiceProvider Provider');
   }
 searchRepo(data:any){
-this.http.get("https://api.github.com/search/repositories?q="+data.keyword+"+language:"+data.lang)
+
+let headers=new Headers();
+headers.append('Content-Type','application/json');
+return this.http.get("https://api.github.com/search/repositories?q="+data.keyword+"+language:"+data.lang).map(res=>res.json())
 
 }
 }
